@@ -1,6 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+// Project Module Imports
+const adminRouter = require("./routes/admin");
+const shopRouter = require("./routes/shop");
+
 // Sets up the express app
 const app = express();
 
@@ -13,23 +17,11 @@ app.use("/", (req, res, next) => {
     next(); // This allows for continuation to the next middleware
 });
 
-// Route for rendering a page that allows users to add a product.
-app.use("/add-product", (req, res) => {
-    res.send(
-        "<form action='/product' method='POST'><input type='text' name='product' /> <button type='submit'>Add Product</button></form>"
-    );
-});
+// Middleware router that contains admin routes (see ./routes/admin.js)
+app.use(adminRouter);
 
-// Route that handles the post request for a products submitted by users.
-app.use("/product", (req, res) => {
-    console.log(req.body);
-    res.redirect("/");
-});
-
-// Default route.
-app.use("/", (req, res) => {
-    res.send("<h1>Hello World</h1>");
-});
+// Middleware router that contains shop routes (see ./routes/shop.js)
+app.use(shopRouter);
 
 // Runs the server.
 app.listen(4000, () => {
