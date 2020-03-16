@@ -2,13 +2,16 @@ const express = require("express");
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log("This is middleware one.");
+// This middleware will always run
+app.use("/", (req, res, next) => {
     next(); // This allows for continuation to the next middleware
 });
 
-app.use((req, res, next) => {
-    console.log("This is middelware two.");
+app.use("/add-product", (req, res) => {
+    res.send("<h1>Add Product</h1>");
+});
+
+app.use("/", (req, res) => {
     res.send("<h1>Hello World</h1>");
 });
 
