@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 
 const router = express.Router();
@@ -6,9 +7,7 @@ const router = express.Router();
 // Chanaged app to router becuase we are now using the express router.
 // Changed .use() to .get() so that the endpoint only responds to get requests.
 router.get("/add-product", (req, res) => {
-    res.send(
-        "<form action='/admin/add-product' method='POST'><input type='text' name='product' /> <button type='submit'>Add Product</button></form>"
-    );
+    res.sendFile(path.join(__dirname, "..", "views", "add-product.html"));
 });
 
 // Route that handles the post request for a products submitted by users.
