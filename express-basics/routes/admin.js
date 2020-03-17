@@ -4,6 +4,8 @@ const rootDir = require("../utils/path");
 
 const router = express.Router();
 
+const products = [];
+
 // Route for rendering a page that allows users to add a product.
 // Chanaged app to router becuase we are now using the express router.
 // Changed .use() to .get() so that the endpoint only responds to get requests.
@@ -15,8 +17,11 @@ router.get("/add-product", (req, res) => {
 // Chanaged app to router becuase we are now using the express router.
 // Change app.use to app.post so it only responds to post requests.
 router.post("/add-product", (req, res) => {
-    console.log(req.body);
+    products.push({ title: req.body.title });
     res.redirect("/");
 });
 
-module.exports = router;
+module.exports = {
+    router,
+    products
+};

@@ -1,9 +1,13 @@
+// Global Node Modules
 const path = require("path");
+
+// External Node Modules
 const express = require("express");
 const bodyParser = require("body-parser");
 
 // Project Module Imports
-const adminRouter = require("./routes/admin");
+// Renamed a destructured property from the exports of the admin file object.
+const { router: adminRouter } = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 
 // Sets up the express app
@@ -17,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // This middleware will always run
+// It doesn't actually do anything
 app.use("/", (req, res, next) => {
     next(); // This allows for continuation to the next middleware
 });
