@@ -13,6 +13,9 @@ const app = express();
 // True is the default value for "extended" but needs to be manually set.
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// This exposes the public folder to the internet with read access.
+app.use(express.static(path.join(__dirname, "public")));
+
 // This middleware will always run
 app.use("/", (req, res, next) => {
     next(); // This allows for continuation to the next middleware
