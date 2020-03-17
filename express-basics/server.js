@@ -18,10 +18,15 @@ app.use("/", (req, res, next) => {
 });
 
 // Middleware router that contains admin routes (see ./routes/admin.js)
-app.use(adminRouter);
+app.use("/admin", adminRouter);
 
 // Middleware router that contains shop routes (see ./routes/shop.js)
 app.use(shopRouter);
+
+// This creates a 404 route for our site.
+app.use((req, res) => {
+    res.status(404).send("<h1>Page Not Found</h1>");
+});
 
 // Runs the server.
 app.listen(4000, () => {

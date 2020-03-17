@@ -7,14 +7,14 @@ const router = express.Router();
 // Changed .use() to .get() so that the endpoint only responds to get requests.
 router.get("/add-product", (req, res) => {
     res.send(
-        "<form action='/product' method='POST'><input type='text' name='product' /> <button type='submit'>Add Product</button></form>"
+        "<form action='/admin/add-product' method='POST'><input type='text' name='product' /> <button type='submit'>Add Product</button></form>"
     );
 });
 
 // Route that handles the post request for a products submitted by users.
 // Chanaged app to router becuase we are now using the express router.
 // Change app.use to app.post so it only responds to post requests.
-router.post("/product", (req, res) => {
+router.post("/add-product", (req, res) => {
     console.log(req.body);
     res.redirect("/");
 });
