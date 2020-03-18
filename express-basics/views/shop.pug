@@ -3,8 +3,10 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title My Shop
-        link(rel="stylesheet", href="/css/style.css")
+        title #{docTitle}
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/products.css")
+        link(rel="stylesheet", href="/css/forms.css")
     body
         header.main-header
             nav.main-header__nav
@@ -13,3 +15,17 @@ html(lang="en")
                         a.active(href="/") Shop
                     li.main-header__item
                         a(href="/admin/add-product") Add Product
+        main
+            .grid
+                each product in products
+                    article.product-item
+                        header.card__header
+                            h1.product__title #{product.title}
+                        .card__image
+                            img(src="https://placedog.net/250/250")
+                        .card__content 
+                            h2.product__price $19.99
+                            p.product__description This is a dog.
+                        .card__actions
+                            buton.btn Add To Cart
+
