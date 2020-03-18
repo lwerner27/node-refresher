@@ -9,7 +9,7 @@ const router = express.Router();
 // Default route.
 router.get("/", (req, res) => {
     // console.log("shop.js", products);s
-    res.sendFile(path.join(rootDir, "views", "shop.html"));
+    res.render("shop");
 });
 
 module.exports = router;

@@ -13,6 +13,12 @@ const shopRouter = require("./routes/shop");
 // Sets up the express app
 const app = express();
 
+// This enables pug as the view engine
+app.set("view engine", "pug");
+
+// This is normally only need if the views folder is not in the root of the project
+app.set("views", "views");
+
 // This has our app use the body-parser middleware for... Parsing the body...
 // True is the default value for "extended" but needs to be manually set.
 app.use(bodyParser.urlencoded({ extended: true }));
