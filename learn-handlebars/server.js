@@ -4,6 +4,7 @@ const path = require("path");
 // External Node Modules
 const express = require("express");
 const bodyParser = require("body-parser");
+const hbs = require("express-handlebars");
 
 // Project Module Imports
 // Renamed a destructured property from the exports of the admin file object.
@@ -13,8 +14,11 @@ const shopRouter = require("./routes/shop");
 // Sets up the express app
 const app = express();
 
-// This enables pug as the view engine
-app.set("view engine", "pug");
+// We need to tell express about this rendering engine because it doesn't have built in fucntionality already.
+app.engine("handlebars", hbs());
+
+// This enables handlebars as the view engine
+app.set("view engine", "handlebars");
 
 // This is normally only need if the views folder is not in the root of the project
 app.set("views", "views");
