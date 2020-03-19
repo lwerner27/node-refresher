@@ -10,7 +10,10 @@ const products = [];
 // Chanaged app to router becuase we are now using the express router.
 // Changed .use() to .get() so that the endpoint only responds to get requests.
 router.get("/add-product", (req, res) => {
-    res.render("add-product.pug", { pageTitle: "Add Product" });
+    res.render("add-product.pug", {
+        pageTitle: "Add Product",
+        path: "/admin/add-product"
+    });
 });
 
 // Route that handles the post request for a products submitted by users.
