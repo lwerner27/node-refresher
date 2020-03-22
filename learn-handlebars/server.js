@@ -15,7 +15,12 @@ const shopRouter = require("./routes/shop");
 const app = express();
 
 // We need to tell express about this rendering engine because it doesn't have built in fucntionality already.
-app.engine("handlebars", hbs());
+// This layoutsDir is the default location so we don't have to set it but this is how we would.
+// "main" is also the default value for "defaultLayout" but we will set it anyways.
+app.engine(
+    "handlebars",
+    hbs({ layoutsDir: "views/layouts/", defaultLayout: "main" })
+);
 
 // This enables handlebars as the view engine
 app.set("view engine", "handlebars");
