@@ -34,7 +34,7 @@ app.use(shopRouter);
 
 // This creates a 404 route for our site.
 app.use((req, res) => {
-    res.status(404).render("404", { pageTitle: "404: Page Not Found" });
+    res.status(404).render("404", { pageTitle: "404: Page Not Found", path: "fallback" });
 });
 
 // Runs the server.
