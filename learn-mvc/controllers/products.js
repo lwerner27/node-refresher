@@ -1,5 +1,4 @@
-// Array used for storing products
-const products = [];
+const Product = require("../models/product");
 
 // Function used for serving the "/admin/add-product" page
 function getAddProduct(req, res) {
@@ -14,12 +13,14 @@ function getAddProduct(req, res) {
 
 // Function used for handling post requests to the /admin/add-product route
 function postAddProduct(req, res) {
-    products.push({ title: req.body.title });
+    const product = new Product(req.body.title);
+    product.save();
     res.redirect("/");
 }
 
 // Function used for serving the "/" page and data
 function getProducts(req, res) {
+    const products = Product.fetchAll();
     res.render("shop", {
         products,
         pageTitle: "Shop",
@@ -33,6 +34,5 @@ function getProducts(req, res) {
 module.exports = {
     getAddProduct,
     postAddProduct,
-    getProducts,
-    products
+    getProducts
 };
