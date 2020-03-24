@@ -4,9 +4,7 @@ const { products } = require("./admin");
 
 const router = express.Router();
 
-// Default route.
 router.get("/", (req, res) => {
-    // console.log(products);
     res.render("shop", {
         products,
         pageTitle: "Shop",
