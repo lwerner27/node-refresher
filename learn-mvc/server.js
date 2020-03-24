@@ -6,19 +6,24 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const hbs = require("express-handlebars");
 
+// Route imports
 const adminRoutes = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 
+// Express Initialization
 const app = express();
 
+// Handlebars Setup
 app.engine("handlebars", hbs());
 app.set("view engine", "handlebars");
 
+// Body Parser Setup
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Static Directory Setup
 app.use(express.static(path.join(__dirname, "public")));
 
-// Route imports
+// Route Assignments
 app.use("/admin", adminRoutes);
 app.use(shopRouter);
 
