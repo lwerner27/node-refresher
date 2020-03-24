@@ -6,7 +6,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const hbs = require("express-handlebars");
 
-const { router: adminRouter } = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Route imports
-app.use("/admin", adminRouter);
+app.use("/admin", adminRoutes);
 app.use(shopRouter);
 
 // 404 Route
