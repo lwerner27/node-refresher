@@ -20,14 +20,15 @@ function postAddProduct(req, res) {
 
 // Function used for serving the "/" page and data
 function getProducts(req, res) {
-    const products = Product.fetchAll();
-    res.render("shop", {
-        products,
-        pageTitle: "Shop",
-        path: "/",
-        hasProducts: products.length > 0,
-        activeShop: true,
-        productCSS: true
+    Product.fetchAll(products => {
+        res.render("shop", {
+            products,
+            pageTitle: "Shop",
+            path: "/",
+            hasProducts: products.length > 0,
+            activeShop: true,
+            productCSS: true
+        });
     });
 }
 
