@@ -29,6 +29,7 @@ function getProducts(req, res) {
         productCSS: true
     });
 }
+
 module.exports = {
     getAddProduct,
     postAddProduct,
