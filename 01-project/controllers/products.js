@@ -2,7 +2,7 @@ const Product = require("../models/product");
 
 // Function used for serving the "/admin/add-product" page
 function getAddProduct(req, res) {
-    res.render("add-product", {
+    res.render("admin/add-product", {
         pageTitle: "Add Product",
         path: "/admin/add-product",
         activeAddProduct: true,
@@ -21,7 +21,7 @@ function postAddProduct(req, res) {
 // Function used for serving the "/" page and data
 function getProducts(req, res) {
     Product.fetchAll(products => {
-        res.render("shop", {
+        res.render("shop/product-list", {
             products,
             pageTitle: "Shop",
             path: "/",
