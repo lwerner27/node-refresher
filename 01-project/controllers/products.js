@@ -32,8 +32,26 @@ function getProducts(req, res) {
     });
 }
 
+// Function used for serving the "/admin/products" page
+function getAdminProducts(req, res) {
+    res.render("admin/products", {
+        pageTitle: "Admin Products",
+        path: "/admin/products"
+    });
+}
+
+// Function used for serving the "/admin/edit-product" page
+function getEditProduct(req, res) {
+    res.render("admin/edit-product", {
+        pageTitle: "Edit Product",
+        path: "/admin/edit-product"
+    });
+}
+
 module.exports = {
     getAddProduct,
     postAddProduct,
-    getProducts
+    getProducts,
+    getAdminProducts,
+    getEditProduct
 };
