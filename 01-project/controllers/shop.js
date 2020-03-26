@@ -1,57 +1,48 @@
 const Product = require("../models/product");
 
-// Function used for serving the "/admin/add-product" page
-function getAddProduct(req, res) {
-    res.render("admin/add-product", {
-        pageTitle: "Add Product",
-        path: "/admin/add-product",
-        activeAddProduct: true,
-        formsCSS: true,
-        productCSS: true
-    });
-}
-
-// Function used for handling post requests to the /admin/add-product route
-function postAddProduct(req, res) {
-    const product = new Product(req.body.title);
-    product.save();
-    res.redirect("/");
-}
-
-// Function used for serving the "/" page and data
+// Function used for serving the "/products" page and data
 function getProducts(req, res) {
     Product.fetchAll(products => {
         res.render("shop/product-list", {
             products,
-            pageTitle: "Shop",
-            path: "/",
+            pageTitle: "All Products",
             hasProducts: products.length > 0,
-            activeShop: true,
+            activeProducts: true,
             productCSS: true
         });
     });
 }
 
-// Function used for serving the "/admin/products" page
-function getAdminProducts(req, res) {
-    res.render("admin/products", {
-        pageTitle: "Admin Products",
-        path: "/admin/products"
+// Function used for serving the "/" page
+function getIndex(req, res) {
+    Product.fetchAll(products => {
+        res.render("shop/index", {
+            products,
+            pageTitle: "Shop",
+            activeShop: true,
+            hasProducts: products.length > 0,
+            productCSS: true
+        });
     });
 }
 
-// Function used for serving the "/admin/edit-product" page
-function getEditProduct(req, res) {
-    res.render("admin/edit-product", {
-        pageTitle: "Edit Product",
-        path: "/admin/edit-product"
+// Function used for serving the "/cart" page
+function getCart(req, res) {
+    res.render("shop/cart", {
+        pageTitle: " Your Cart",
+        activeCart: true
+    });
+}
+
+function getCheckout(req, res) {
+    res.render("shop/checkout", {
+        pageTitle: "Checkout"
     });
 }
 
 module.exports = {
-    getAddProduct,
-    postAddProduct,
     getProducts,
-    getAdminProducts,
-    getEditProduct
+    getIndex,
+    getCart,
+    getCheckout
 };
