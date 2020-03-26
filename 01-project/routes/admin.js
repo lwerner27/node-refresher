@@ -6,7 +6,7 @@ const {
     postAddProduct,
     getAdminProducts,
     getEditProduct
-} = require("../controllers/products");
+} = require("../controllers/shop");
 
 const router = express.Router();
 
