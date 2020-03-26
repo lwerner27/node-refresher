@@ -12,7 +12,8 @@ function getAddProduct(req, res) {
 
 // Function used for handling post requests to the /admin/add-product route
 function postAddProduct(req, res) {
-    const product = new Product(req.body.title);
+    const { title, imageUrl, description, price } = req.body;
+    const product = new Product(title, imageUrl, description, price);
     product.save();
     res.redirect("/");
 }
