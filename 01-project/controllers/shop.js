@@ -40,9 +40,17 @@ function getCheckout(req, res) {
     });
 }
 
+function getOrders(req, res) {
+    res.render("shop/orders", {
+        pageTitle: "Orders",
+        activeOrders: true
+    });
+}
+
 module.exports = {
     getProducts,
     getIndex,
     getCart,
-    getCheckout
+    getCheckout,
+    getOrders
 };
