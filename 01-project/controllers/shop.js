@@ -34,12 +34,14 @@ function getCart(req, res) {
     });
 }
 
+// Function use for serving the "/checkout" page
 function getCheckout(req, res) {
     res.render("shop/checkout", {
         pageTitle: "Checkout"
     });
 }
 
+// Function used for serving the "/orders" page
 function getOrders(req, res) {
     res.render("shop/orders", {
         pageTitle: "Orders",
@@ -47,10 +49,20 @@ function getOrders(req, res) {
     });
 }
 
+// Function used for servering "/product-details" page for a specific product
+function getProductDetails(req, res) {
+    const { productId } = req.params;
+    Product.findById(productId, product => {
+        console.log(product);
+    });
+    res.redirect("/");
+}
+
 module.exports = {
     getProducts,
     getIndex,
     getCart,
     getCheckout,
-    getOrders
+    getOrders,
+    getProductDetails
 };
