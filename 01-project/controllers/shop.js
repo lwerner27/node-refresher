@@ -53,9 +53,11 @@ function getOrders(req, res) {
 function getProductDetails(req, res) {
     const { productId } = req.params;
     Product.findById(productId, product => {
-        console.log(product);
+        res.render("shop/product-details", {
+            pageTitle: "Product Details: " + product.title,
+            product
+        });
     });
-    res.redirect("/");
 }
 
 module.exports = {
