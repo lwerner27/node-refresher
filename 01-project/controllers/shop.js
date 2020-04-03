@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const Cart = require("../models/cart");
 
 // Function used for serving the "/products" page and data
 function getProducts(req, res) {
@@ -24,6 +25,15 @@ function getIndex(req, res) {
             productCSS: true
         });
     });
+}
+
+// Function used for posting items to the cart.
+function postCart(req, res) {
+    const { productId } = req.body;
+    Product.findById(productId, product => {
+        Cart.addProduct(productId, product.price);
+    });
+    res.redirect("/cart");
 }
 
 // Function used for serving the "/cart" page
@@ -63,6 +73,7 @@ function getProductDetails(req, res) {
 module.exports = {
     getProducts,
     getIndex,
+    postCart,
     getCart,
     getCheckout,
     getOrders,
